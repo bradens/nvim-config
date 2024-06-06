@@ -207,7 +207,7 @@ require("lazy").setup({
 				},
 			})
 
-			vim.keymap.set({ "n", "v", "i" }, "<C-n>", ":Neotree toggle<CR>")
+			vim.keymap.set({ "n", "v", "i" }, "<C-n>", ":Neotree toggle<CR>", { silent = true })
 		end,
 	},
 
