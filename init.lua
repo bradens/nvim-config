@@ -171,10 +171,20 @@ require("lazy").setup({
 	--    require('Comment').setup({})
 
 	-- "gc" to comment visual regions/lines
-	{ "numToStr/Comment.nvim", opts = {} },
-
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+		config = function()
+			---@diagnostic disable-next-line: missing-fields
+			require("Comment").setup({
+				pre_hook = function()
+					return vim.bo.commentstring
+				end,
+			})
+		end,
+	},
+	"JoosepAlviste/nvim-ts-context-commentstring",
 	"Almo7aya/openingh.nvim",
-
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -520,6 +530,7 @@ require("lazy").setup({
 					-- This may be unwanted, since they displace some of your code
 					if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
 						map("<leader>th", function()
+							---@diagnostic disable-next-line: missing-parameter
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 						end, "[T]oggle Inlay [H]ints")
 					end
@@ -810,16 +821,16 @@ require("lazy").setup({
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			-- local statusline = require 'mini.statusline'
+			-- local statusline = require("mini.statusline")
 			-- set use_icons to true if you have a Nerd Font
-			-- statusline.setup { use_icons = vim.g.have_nerd_font }
+			-- statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we set the section for
 			-- cursor location to LINE:COLUMN
 			---@diagnostic disable-next-line: duplicate-set-field
 			-- statusline.section_location = function()
-			--   return '%2l:%-2v'
+			-- 	return "%2l:%-2v"
 			-- end
 
 			-- ... and there is more!
@@ -830,6 +841,19 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
+			javascript = {
+				__default = "// %s",
+				jsx_element = "{/* %s */}",
+				jsx_fragment = "{/* %s */}",
+				jsx_attribute = "// %s",
+				comment = "// %s",
+			},
+			typescript = {
+				__default = "// %s",
+				__multiline = "/* %s */",
+				jsx_element = "{/* %s */}",
+				jsx_fragment = "{/* %s */}",
+			},
 			ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
 			-- Autoinstall languages that are not installed
 			auto_install = true,
@@ -844,7 +868,6 @@ require("lazy").setup({
 		},
 		config = function(_, opts)
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
 			-- Prefer git instead of curl in order to improve connectivity in some environments
 			require("nvim-treesitter.install").prefer_git = true
 			---@diagnostic disable-next-line: missing-fields
@@ -868,12 +891,10 @@ require("lazy").setup({
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
-	-- require 'kickstart.plugins.debug',
-	-- require 'kickstart.plugins.indent_line',
-	-- require 'kickstart.plugins.lint',
-	-- require 'kickstart.plugins.autopairs',
-	-- require 'kickstart.plugins.neo-tree',
-	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+	-- require("kickstart.plugins.debug"),
+	require("kickstart.plugins.indent_line"),
+	-- require("kickstart.plugins.lint"),
+	-- require("kickstart.plugins.autopairs"),
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
