@@ -10,6 +10,12 @@ end
 map("i", "<C-f>", "<Right>")
 map("i", "<C-b>", "<Left>")
 
+-- These are used mostly by the alacritty config to map CMD-<key> to other keymaps
+map("n", "<leader>buf", "<Esc>:Telescope buffers<CR>")
+map("n", "<leader>lfd", ":Telescope lsp_references<CR>")
+map("n", "<leader>pf", ":Telescope find_files<CR>")
+map("n", "<leader>pg", ":Telescope git_status<CR>")
+
 -- kill the buff
 map("n", "<leader>k", ":Bdelete<CR>")
 map("n", "<leader>K", ":clo<CR>")
