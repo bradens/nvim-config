@@ -201,4 +201,26 @@ return {
 			g.floaterm_opener = "vsplit"
 		end,
 	},
+	{
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup({
+				keymaps = {
+					["<C-p>"] = false,
+					["<C-h>"] = false,
+				},
+				view_options = {
+					show_hidden = true,
+				},
+			})
+			vim.keymap.set({ "n", "v", "i" }, "<C-n>", ":Oil<CR>", { silent = true, desc = "Open parent directory" })
+		end,
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+
+	-- My color scheme
+	{ "cocopon/iceberg.vim", priority = 10000 },
+
+	"tpope/vim-surround",
 }

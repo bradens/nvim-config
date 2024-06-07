@@ -66,4 +66,12 @@ opt.updatetime = 100
 -- theme
 opt.termguicolors = true
 
+vim.cmd([[highlight FloatermBorder guifg=#d2d4de guibg=#14161b]])
+vim.cmd([[highlight NormalFloat guifg=#d2d4de guibg=#18161d]])
+vim.cmd([[highlight CmpItemMenu guifg=#d2d4de guibg=#14161b]])
+vim.cmd([[highlight WinSeparator guifg=#1d1d1d ]])
+
+-- Remove the weird ~ characters at the end of the buffer
+vim.opt.fillchars = { eob = " " }
+
 require("barbecue.ui").toggle(true)

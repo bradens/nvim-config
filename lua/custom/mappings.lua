@@ -10,6 +10,8 @@ end
 map("i", "<C-f>", "<Right>")
 map("i", "<C-b>", "<Left>")
 
+map("i", "jk", "<Esc>")
+
 -- These are used mostly by the alacritty config to map CMD-<key> to other keymaps
 map("n", "<leader>buf", "<Esc>:Telescope buffers<CR>")
 map("n", "<leader>lfd", ":Telescope lsp_references<CR>")
