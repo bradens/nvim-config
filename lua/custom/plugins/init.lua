@@ -218,9 +218,8 @@ return {
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-
 	-- My color scheme
-	{ "cocopon/iceberg.vim", priority = 10000 },
+	-- { "cocopon/iceberg.vim", priority = 10000 },
 
 	"tpope/vim-surround",
 }
