@@ -612,14 +612,14 @@ require("lazy").setup({
 				-- languages here or re-enable it for the disabled ones.
 				local disable_filetypes = { c = true, cpp = true }
 				return {
-					timeout_ms = 100,
+					timeout_ms = 300,
 					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 				}
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				typescript = { "prettierd" },
-				typescriptreact = { "prettierd" },
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--

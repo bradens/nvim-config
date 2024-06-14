@@ -56,12 +56,7 @@ opt.writebackup = false
 -- autocomplete
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.shortmess = opt.shortmess + { c = true }
-
--- perfomance
-opt.redrawtime = 1500
-opt.timeoutlen = 200
-opt.ttimeoutlen = 10
-opt.updatetime = 100
+-- perfomance opt.redrawtime = 1500 opt.timeoutlen = 200 opt.ttimeoutlen = 10 opt.updatetime = 100
 
 -- theme
 opt.termguicolors = true
@@ -76,5 +71,9 @@ vim.cmd([[highlight NormalFloat guifg=#d2d4de guibg=#1a1b25]])
 
 -- Remove the weird ~ characters at the end of the buffer
 vim.opt.fillchars = { eob = " " }
+
+vim.api.nvim_create_user_command("Browse", function(opts)
+	vim.fn.system({ "open", opts.fargs[1] })
+end, { nargs = 1 })
 
 require("barbecue.ui").toggle(true)

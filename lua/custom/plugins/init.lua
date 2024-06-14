@@ -208,6 +208,9 @@ return {
 				keymaps = {
 					["<C-p>"] = false,
 					["<C-h>"] = false,
+					["<C-l>"] = false,
+					["<C-j>"] = false,
+					["<C-k>"] = false,
 				},
 				view_options = {
 					show_hidden = true,
@@ -220,6 +223,27 @@ return {
 	},
 	-- My color scheme
 	-- { "cocopon/iceberg.vim", priority = 10000 },
-
 	"tpope/vim-surround",
+	"tpope/vim-rhubarb",
+	"metakirby5/codi.vim",
+	{
+		"vimpostor/vim-lumen",
+		config = function()
+			vim.g.lumen_light_colorscheme = "tokyonight-day"
+			vim.g.lumen_dark_colorscheme = "tokyonight-night"
+			-- vim.api.nvim_create_augroup("User", { clear = true })
+			-- vim.api.nvim_create_autocmd("User", {
+			-- 	pattern = "LumenLight",
+			-- 	callback = function()
+			-- 		vim.fn.system({ "colorscheme", "tokyo-night-day" })
+			-- 	end,
+			-- })
+			-- vim.api.nvim_create_autocmd("User", {
+			-- 	pattern = "LumenDark",
+			-- 	callback = function()
+			-- 		vim.fn.system({ "colorscheme", "tokyo-night" })
+			-- 	end,
+			-- })
+		end,
+	},
 }
