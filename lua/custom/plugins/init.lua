@@ -201,26 +201,62 @@ return {
 			g.floaterm_opener = "vsplit"
 		end,
 	},
+
 	{
-		"stevearc/oil.nvim",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
 		config = function()
-			require("oil").setup({
-				keymaps = {
-					["<C-p>"] = false,
-					["<C-h>"] = false,
-					["<C-l>"] = false,
-					["<C-j>"] = false,
-					["<C-k>"] = false,
+			require("neo-tree").setup({
+				popup_border_style = "rounded",
+				enable_diagnostics = false,
+				respect_buf_cwd = true,
+				update_focused_file = {
+					enable = true,
 				},
-				view_options = {
-					show_hidden = true,
+				buffers = {
+					follow_current_file = {
+						enabled = true, -- This will find and focus the file in the active buffer every time
+						--              -- the current file is changed while the tree is open.
+						leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+					},
+				},
+				filesystem = {
+					follow_current_file = {
+						enabled = true, -- This will find and focus the file in the active buffer every time
+						--               -- the current file is changed while the tree is open.
+						leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+					},
 				},
 			})
-			vim.keymap.set({ "n", "v", "i" }, "<C-n>", ":Oil<CR>", { silent = true, desc = "Open parent directory" })
+
+			vim.keymap.set({ "n", "v", "i" }, "<C-n>", ":Neotree toggle<CR>", { silent = true })
 		end,
-		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	-- {
+	-- 	"stevearc/oil.nvim",
+	-- 	config = function()
+	-- 		require("oil").setup({
+	-- 			keymaps = {
+	-- 				["<C-p>"] = false,
+	-- 				["<C-h>"] = false,
+	-- 				["<C-l>"] = false,
+	-- 				["<C-j>"] = false,
+	-- 				["<C-k>"] = false,
+	-- 			},
+	-- 			view_options = {
+	-- 				show_hidden = true,
+	-- 			},
+	-- 		})
+	-- 		vim.keymap.set({ "n", "v", "i" }, "<C-n>", ":Oil<CR>", { silent = true, desc = "Open parent directory" })
+	-- 	end,
+	-- 	-- Optional dependencies
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- },
 	-- My color scheme
 	-- { "cocopon/iceberg.vim", priority = 10000 },
 	"tpope/vim-surround",
