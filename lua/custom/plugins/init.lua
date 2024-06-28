@@ -257,29 +257,32 @@ return {
 	-- 	-- Optional dependencies
 	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- },
-	-- My color scheme
-	-- { "cocopon/iceberg.vim", priority = 10000 },
 	"tpope/vim-surround",
 	"tpope/vim-rhubarb",
 	"metakirby5/codi.vim",
 	{
-		"vimpostor/vim-lumen",
+		"cormacrelf/dark-notify",
 		config = function()
-			vim.g.lumen_light_colorscheme = "tokyonight-day"
-			vim.g.lumen_dark_colorscheme = "tokyonight-night"
-			-- vim.api.nvim_create_augroup("User", { clear = true })
-			-- vim.api.nvim_create_autocmd("User", {
-			-- 	pattern = "LumenLight",
-			-- 	callback = function()
-			-- 		vim.fn.system({ "colorscheme", "tokyo-night-day" })
-			-- 	end,
-			-- })
-			-- vim.api.nvim_create_autocmd("User", {
-			-- 	pattern = "LumenDark",
-			-- 	callback = function()
-			-- 		vim.fn.system({ "colorscheme", "tokyo-night" })
-			-- 	end,
-			-- })
+			require("dark_notify").run({
+				dark = "tokyonight-night",
+				light = "tokyonight-day",
+				onchange = function(mode)
+					if mode == "dark" then
+						vim.cmd([[colorscheme tokyonight-night]])
+						vim.cmd([[highlight FloatermBorder guifg=#d2d4de guibg=#1a1b25]])
+						vim.cmd([[highlight TelescopeBorder guifg=#d2d4de guibg=#1a1b25]])
+						vim.cmd([[highlight TelescopePromptBorder guifg=#d2d4de guibg=#1a1b25]])
+						vim.cmd([[highlight TelescopeNormal guifg=#d2d4de guibg=#1a1b25]])
+						vim.cmd([[highlight NormalFloat guifg=#d2d4de guibg=#1a1b25]])
+					else
+						vim.cmd([[highlight FloatermBorder guibg=#e1e2e7]])
+						vim.cmd([[highlight TelescopeBorder guibg=#e1e2e7]])
+						vim.cmd([[highlight TelescopePromptBorder guibg=#e1e2e7]])
+						vim.cmd([[highlight TelescopeNormal guibg=#e1e2e7]])
+						vim.cmd([[highlight NormalFloat guibg=#e1e2e7]])
+					end
+				end,
+			})
 		end,
 	},
 }

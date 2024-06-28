@@ -61,13 +61,11 @@ opt.shortmess = opt.shortmess + { c = true }
 -- theme
 opt.termguicolors = true
 
-vim.cmd([[highlight FloatermBorder guifg=#d2d4de guibg=#1a1b25]])
-vim.cmd([[highlight TelescopeBorder guifg=#d2d4de guibg=#1a1b25]])
-vim.cmd([[highlight TelescopePromptBorder guifg=#d2d4de guibg=#1a1b25]])
-vim.cmd([[highlight TelescopeNormal guifg=#d2d4de guibg=#1a1b25]])
-vim.cmd([[highlight NormalFloat guifg=#d2d4de guibg=#1a1b25]])
--- vim.cmd([[highlight CmpItemMenu guifg=#d2d4de guibg=#14161b]])
--- vim.cmd([[highlight WinSeparator guifg=#1d1d1d ]])
+-- vim.cmd([[highlight FloatermBorder guifg=#d2d4de guibg=#1a1b25]])
+-- vim.cmd([[highlight TelescopeBorder guifg=#d2d4de guibg=#1a1b25]])
+-- vim.cmd([[highlight TelescopePromptBorder guifg=#d2d4de guibg=#1a1b25]])
+-- vim.cmd([[highlight TelescopeNormal guifg=#d2d4de guibg=#1a1b25]])
+-- vim.cmd([[highlight NormalFloat guifg=#d2d4de guibg=#1a1b25]])
 
 -- Remove the weird ~ characters at the end of the buffer
 vim.opt.fillchars = { eob = " " }
