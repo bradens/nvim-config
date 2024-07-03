@@ -259,6 +259,18 @@ return {
 	-- },
 	"tpope/vim-surround",
 	"tpope/vim-rhubarb",
+	{
+		"vim-test/vim-test",
+		config = function()
+			vim.keymap.set({ "n", "v" }, "<Leader>t", ":TestNearest<CR>", { silent = true, desc = "Run nearest test" })
+			vim.g["test#strategy"] = "neovim_sticky"
+			vim.g["test#neovim#start_normal"] = 1
+			vim.g["test#neovim#term_position"] = "vert 100"
+			vim.g["test#neovim_sticky#kill_previous"] = 1 -- Try to abort previous run
+			vim.g["test#preserve_screen"] = 0 -- Clear screen from previous run
+			vim.g["test#neovim_sticky#reopen_window"] = 1 -- Reopen terminal split if not visible
+		end,
+	},
 	"metakirby5/codi.vim",
 	{
 		"cormacrelf/dark-notify",
