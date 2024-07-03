@@ -51,7 +51,6 @@ map("t", "<C-\\>", [[<C-\><C-n>:FloatermToggle<CR>]], { desc = "Close Floaterm" 
 map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Esc in floaterm" })
 map("t", "<C-l>", [[<C-\><C-n>:FloatermNext<CR>]], { desc = "Next Floaterm" })
 map("t", "<C-h>", [[<C-\><C-n>:FloatermPrev<CR>]], { desc = "Prev Floaterm" })
-map("t", "<C-t>", [[<C-\><C-n>:FloatermNew<CR>]], { desc = "New Floaterm" })
 
 -- Telescope
 map({ "n", "v", "i" }, "<D-p>", "<Esc>:Telescope find_files<CR>")
