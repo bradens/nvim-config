@@ -298,6 +298,10 @@ return {
 		end,
 	},
 	{
+		"tpope/vim-repeat",
+		lazy = false,
+	},
+	{
 		"TaDaa/vimade",
 		config = function()
 			vim.g.vimade = {
