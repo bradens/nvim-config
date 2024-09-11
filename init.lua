@@ -226,19 +226,19 @@ require("lazy").setup({
 			require("which-key").setup()
 
 			-- Document existing key chains
-			require("which-key").register({
-				["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-				["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-				["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-				["<leader>t"] = { name = "[T]oggle", _ = "which_key_ignore" },
-				["<leader>h"] = { name = "Git [H]unk", _ = "which_key_ignore" },
+			require("which-key").add({
+				{ "<leader>c", name = "[C]ode" },
+				{ "<leader>d", name = "[D]ocument" },
+				{ "<leader>r", name = "[R]ename" },
+				{ "<leader>s", name = "[S]earch" },
+				{ "<leader>w", name = "[W]orkspace" },
+				{ "<leader>t", name = "[T]oggle" },
+				{ "<leader>h", name = "Git [H]unk" },
 			})
 			-- visual mode
-			require("which-key").register({
-				["<leader>h"] = { "Git [H]unk" },
-			}, { mode = "v" })
+			require("which-key").add({
+				{ "<leader>h", mode = "v", desc = "Git [H]unk" },
+			})
 		end,
 	},
 
@@ -299,11 +299,12 @@ require("lazy").setup({
 				-- You can put your default mappings / updates / etc. in here
 				--  All the info you're looking for is in `:help telescope.setup()`
 				--
-				-- defaults = {
-				--   mappings = {
-				--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-				--   },
-				-- },
+				defaults = {
+					file_ignore_patterns = {
+						"public",
+						"ios",
+					},
+				},
 				-- pickers = {}
 				extensions = {
 					["ui-select"] = {
@@ -579,6 +580,10 @@ require("lazy").setup({
 			require("mason-lspconfig").setup({
 				handlers = {
 					function(server_name)
+						-- https://github.com/neovim/nvim-lspconfig/pull/3232
+						if server_name == "tsserver" then
+							server_name = "ts_ls"
+						end
 						local server = servers[server_name] or {}
 						-- This handles overriding only values explicitly passed
 						-- by the server configuration above. Useful when disabling
@@ -598,7 +603,7 @@ require("lazy").setup({
 			{
 				"<leader>f",
 				function()
-					require("conform").format({ async = true, lsp_fallback = true })
+					require("conform").format({ lsp_fallback = false })
 				end,
 				mode = "",
 				desc = "[F]ormat buffer",
@@ -612,7 +617,7 @@ require("lazy").setup({
 				-- languages here or re-enable it for the disabled ones.
 				local disable_filetypes = { c = true, cpp = true }
 				return {
-					timeout_ms = 300,
+					timeout_ms = 800,
 					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 				}
 			end,

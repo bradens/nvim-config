@@ -59,6 +59,7 @@ map({ "n", "v", "i" }, "<D-b>", "<Esc>:Telescope buffers<CR>")
 
 -- Opening special directories
 map("n", "<leader>cop", ":Open ~/.config/nvim/lua<CR>")
+map("n", "<leader>mux", ":e ~/.tmux.conf<CR>")
 map("n", "<leader>,", ":e ~/.config/nvim/lua/custom/mappings.lua<CR>")
 map("n", "<leader>as", ":e ~/.config/alacritty/alacritty.toml<CR>")
 

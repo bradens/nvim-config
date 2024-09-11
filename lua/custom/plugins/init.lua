@@ -297,4 +297,24 @@ return {
 			})
 		end,
 	},
+	{
+		"TaDaa/vimade",
+		config = function()
+			vim.g.vimade = {
+				enabletreesitter = 1,
+				fadelevel = 0.5,
+				enablesigns = 1,
+			}
+		end,
+	},
+	{
+		"goolord/alpha-nvim",
+		dependencies = {
+			"echasnovski/mini.icons",
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("alpha").setup(require("alpha.themes.theta").config)
+		end,
+	},
 }
