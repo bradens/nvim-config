@@ -37,7 +37,7 @@ map("i", "<D-z>", "<Esc>:undo<CR>")
 -- Saving
 map("n", "<C-s>", ":w<CR>", { silent = true })
 map("n", "<leader>s", ":silent w<CR>")
-map("n", "<leader>qa", ":wqa<CR>")
+map("n", "<leader>qa", ":wqa!<CR>")
 map({ "i", "v", "n" }, "<D-s>", "<Esc>:w<CR>")
 
 -- Diagnostics
@@ -113,3 +113,6 @@ map("t", "<C-w>c", [[<C-\><C-n>:FloatermKill<CR>]], { desc = "Kill current termi
 -- indentation
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+-- Quickly create new files
+map("n", "<leader>nf", ":AdvancedNewFile<CR>", { desc = "Create new file" })
