@@ -296,13 +296,35 @@ require("lazy").setup({
 			-- [[ Configure Telescope ]]
 			-- See `:help telescope` and `:help telescope.setup()`
 			require("telescope").setup({
+
 				-- You can put your default mappings / updates / etc. in here
 				--  All the info you're looking for is in `:help telescope.setup()`
 				--
 				defaults = {
+					borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+					layout_config = {
+						-- height = 0.5,
+						-- width = 0.5,
+						width = function(_, max_columns)
+							local percentage = 0.5
+							local minimum_width = 80
+							return math.max(math.floor(percentage * max_columns), minimum_width)
+						end,
+						height = function(_, _, max_lines)
+							local percentage = 0.5
+							local min = 40
+							return math.max(math.floor(percentage * max_lines), min)
+						end,
+						prompt_position = "top",
+					},
 					file_ignore_patterns = {
 						"public",
 						"ios",
+					},
+					mappings = {
+						i = {
+							["<esc>"] = require("telescope.actions").close,
+						},
 					},
 				},
 				-- pickers = {}
@@ -614,13 +636,13 @@ require("lazy").setup({
 				local disable_filetypes = { c = true, cpp = true }
 				return {
 					timeout_ms = 800,
-					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+					lsp_fallback = true, -- not disable_filetypes[vim.bo[bufnr].filetype],
 				}
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				typescript = { "eslint_d" },
-				typescriptreact = { "eslint_d" },
+				-- typescriptreact = { "eslint_d" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -898,8 +920,8 @@ require("lazy").setup({
 		},
 	},
 	ui = {
-		backdrop = 100,
-		border = "rounded",
+		backdrop = 80,
+		border = "shadow",
 		size = { width = 0.8, height = 0.8 },
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
 		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table

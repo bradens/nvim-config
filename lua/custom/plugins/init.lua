@@ -197,7 +197,8 @@ return {
 			g.floaterm_width = 0.7
 			g.floaterm_height = 0.8
 			g.floaterm_title = "[" .. title .. "]:($1/$2)"
-			g.floaterm_borderchars = "─│─│╭╮╯╰"
+			g.floaterm_borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+			-- g.floaterm_borderchars = "─│─│╭╮╯╰"
 			g.floaterm_opener = "vsplit"
 		end,
 	},
@@ -212,7 +213,7 @@ return {
 		},
 		config = function()
 			require("neo-tree").setup({
-				popup_border_style = "rounded",
+				-- popup_border_style = "rounded",
 				enable_diagnostics = false,
 				respect_buf_cwd = true,
 				update_focused_file = {
@@ -272,31 +273,31 @@ return {
 		end,
 	},
 	"metakirby5/codi.vim",
-	{
-		"cormacrelf/dark-notify",
-		config = function()
-			require("dark_notify").run({
-				dark = "tokyonight-night",
-				light = "tokyonight-day",
-				onchange = function(mode)
-					if mode == "dark" then
-						vim.cmd([[colorscheme tokyonight-night]])
-						vim.cmd([[highlight FloatermBorder guifg=#d2d4de guibg=#1a1b25]])
-						vim.cmd([[highlight TelescopeBorder guifg=#d2d4de guibg=#1a1b25]])
-						vim.cmd([[highlight TelescopePromptBorder guifg=#d2d4de guibg=#1a1b25]])
-						vim.cmd([[highlight TelescopeNormal guifg=#d2d4de guibg=#1a1b25]])
-						vim.cmd([[highlight NormalFloat guifg=#d2d4de guibg=#1a1b25]])
-					else
-						vim.cmd([[highlight FloatermBorder guibg=#e1e2e7]])
-						vim.cmd([[highlight TelescopeBorder guibg=#e1e2e7]])
-						vim.cmd([[highlight TelescopePromptBorder guibg=#e1e2e7]])
-						vim.cmd([[highlight TelescopeNormal guibg=#e1e2e7]])
-						vim.cmd([[highlight NormalFloat guibg=#e1e2e7]])
-					end
-				end,
-			})
-		end,
-	},
+	-- {
+	-- 	"cormacrelf/dark-notify",
+	-- 	config = function()
+	-- 		require("dark_notify").run({
+	-- 			dark = "tokyonight-night",
+	-- 			light = "tokyonight-day",
+	-- 			onchange = function(mode)
+	-- 				if mode == "dark" then
+	-- 					vim.cmd([[colorscheme tokyonight-night]])
+	-- 					vim.cmd([[highlight FloatermBorder guifg=#d2d4de guibg=#1a1b25]])
+	-- 					vim.cmd([[highlight TelescopeBorder guifg=#d2d4de guibg=#1a1b25]])
+	-- 					vim.cmd([[highlight TelescopePromptBorder guifg=#d2d4de guibg=#1a1b25]])
+	-- 					vim.cmd([[highlight TelescopeNormal guifg=#d2d4de guibg=#1a1b25]])
+	-- 					vim.cmd([[highlight NormalFloat guifg=#d2d4de guibg=#1a1b25]])
+	-- 				else
+	-- 					vim.cmd([[highlight FloatermBorder guibg=#e1e2e7]])
+	-- 					vim.cmd([[highlight TelescopeBorder guibg=#e1e2e7]])
+	-- 					vim.cmd([[highlight TelescopePromptBorder guibg=#e1e2e7]])
+	-- 					vim.cmd([[highlight TelescopeNormal guibg=#e1e2e7]])
+	-- 					vim.cmd([[highlight NormalFloat guibg=#e1e2e7]])
+	-- 				end
+	-- 			end,
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"tpope/vim-repeat",
 		lazy = false,

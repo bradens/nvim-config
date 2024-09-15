@@ -37,7 +37,7 @@ map("i", "<D-z>", "<Esc>:undo<CR>")
 -- Saving
 map("n", "<C-s>", ":w<CR>", { silent = true })
 map("n", "<leader>s", ":silent w<CR>")
-map("n", "<leader>qa", ":wqa!<CR>")
+map("n", "<leader>qa", ":qa!<CR>")
 map({ "i", "v", "n" }, "<D-s>", "<Esc>:w<CR>")
 
 -- Diagnostics
