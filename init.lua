@@ -553,7 +553,7 @@ require("lazy").setup({
 				--
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				eslint_d = {},
-				tsserver = {
+				vtsls = {
 					preferences = {
 						importModuleSpecifierPreference = "relative",
 						importModuleSpecifierEnding = "minimal",
@@ -605,7 +605,7 @@ require("lazy").setup({
 						local server = servers[server_name] or {}
 						-- This handles overriding only values explicitly passed
 						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for tsserver)
+						-- certain features of an LSP (for example, turning off formatting for ts_ls)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,
@@ -636,13 +636,13 @@ require("lazy").setup({
 				local disable_filetypes = { c = true, cpp = true }
 				return {
 					timeout_ms = 800,
-					lsp_fallback = true, -- not disable_filetypes[vim.bo[bufnr].filetype],
+					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 				}
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
 				typescript = { "eslint_d" },
-				-- typescriptreact = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--

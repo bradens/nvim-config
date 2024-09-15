@@ -114,5 +114,8 @@ map("t", "<C-w>c", [[<C-\><C-n>:FloatermKill<CR>]], { desc = "Kill current termi
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
+-- Lazy
+map("n", "<leader>ll", ":LazyGit<CR>")
+
 -- Quickly create new files
 map("n", "<leader>nf", ":AdvancedNewFile<CR>", { desc = "Create new file" })
