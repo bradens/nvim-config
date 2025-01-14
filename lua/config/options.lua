@@ -28,3 +28,5 @@ opt.laststatus = 0
 opt.showtabline = 0
 
 vim.g.omni_sql_no_default_maps = 1
+
+vim.opt.foldmethod = "manual"

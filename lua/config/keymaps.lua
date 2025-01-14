@@ -118,3 +118,4 @@ map("n", "<leader>nf", ":AdvancedNewFile<CR>", { desc = "Create new file" })
 -- Rename the variable under your cursor.
 --  Most Language Servers support renaming across files, etc.
 map("n", "<leader>rn", vim.lsp.buf.rename)
+map("t", "<esc>", [[<C-\><C-n>]])
