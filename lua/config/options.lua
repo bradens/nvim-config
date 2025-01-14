@@ -30,3 +30,5 @@ opt.showtabline = 0
 vim.g.omni_sql_no_default_maps = 1
 
 vim.opt.foldmethod = "manual"
+
+vim.g.lazyvim_cmp = "blink"

@@ -3,6 +3,7 @@
   "LazyVim": { "branch": "main", "commit": "a1c3ec4cd43fe61e3b614237a46ac92771191c81" },
   "SchemaStore.nvim": { "branch": "main", "commit": "6e2af7e093a4b92e3dce014aa1cbb5449ad1ebf9" },
   "barbecue": { "branch": "main", "commit": "cd7e7da622d68136e13721865b4d919efd6325ed" },
+  "blink.cmp": { "branch": "main", "commit": "a5402a1ae0ef71a3d47e5f82e35cefe7299ba508" },
   "bufdelete.nvim": { "branch": "master", "commit": "f6bcea78afb3060b198125256f897040538bcb81" },
   "bufferline.nvim": { "branch": "main", "commit": "0b2fd861eee7595015b6561dade52fb060be10c4" },
   "catppuccin": { "branch": "main", "commit": "63685e1562ef53873c9764b483d7ac5c7a608922" },
